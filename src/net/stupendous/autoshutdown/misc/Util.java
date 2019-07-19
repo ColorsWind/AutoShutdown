@@ -1,10 +1,14 @@
 package net.stupendous.autoshutdown.misc;
 
+import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class Util {
@@ -144,5 +148,19 @@ public class Util {
 		String formattedMessage = parseColor("&2[&a%s&2] &f%s", new Object[] { pluginName, msg });
 
 		plugin.getServer().broadcastMessage(formattedMessage);
+	}
+	
+	public static Player[] getPlayerOnline() {
+		try {
+			Method method = Bukkit.class.getMethod("getOnlinePlayers");
+			if (method.getReturnType().isArray()) {
+				return (Player[]) method.invoke(null);
+			} else {
+				return ((Collection<?>)method.invoke(null)).toArray(new Player[0]);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new Player[0];
 	}
 }

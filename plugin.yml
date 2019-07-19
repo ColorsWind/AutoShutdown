@@ -1,6 +1,7 @@
 name: AutoShutdown
 main: net.stupendous.autoshutdown.AutoShutdownPlugin
-version: 2.6.1-1.5.1
+version: 2.7.1
+api-version: 1.13
 commands:
   autoshutdown:
     description: Interact with the AutoShutdown plugin

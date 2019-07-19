@@ -24,8 +24,8 @@ public class AutoShutdownPlugin extends JavaPlugin {
 	protected Timer shutdownTimer = null;
 	protected BukkitScheduler scheduler = null;
 	protected boolean shutdownImminent = false;
-	protected TreeSet<Calendar> shutdownTimes = new TreeSet();
-	protected ArrayList<Integer> warnTimes = new ArrayList();
+	protected TreeSet<Calendar> shutdownTimes = new TreeSet<Calendar>();
+	protected ArrayList<Integer> warnTimes = new ArrayList<Integer>();
 	protected String shutdownReason = "Scheduled Shutdown";
 	protected String shutdownMessage;
 
@@ -190,7 +190,7 @@ public class AutoShutdownPlugin extends JavaPlugin {
 
 		log.info("Kicking all players ...");
 
-		Player[] players = getServer().getOnlinePlayers();
+		Player[] players = Util.getPlayerOnline();
 
 		for (Player player : players) {
 			log.info("Kicking player %s.", new Object[] { player.getName() });

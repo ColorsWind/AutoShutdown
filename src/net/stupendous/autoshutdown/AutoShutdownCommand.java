@@ -2,7 +2,6 @@ package net.stupendous.autoshutdown;
 
 import java.util.Calendar;
 
-import net.stupendous.autoshutdown.misc.Log;
 import net.stupendous.autoshutdown.misc.Util;
 
 import org.bukkit.command.Command;
@@ -12,11 +11,9 @@ import org.bukkit.entity.Player;
 
 public class AutoShutdownCommand implements CommandExecutor {
 	private final AutoShutdownPlugin plugin;
-	private final Log log;
 
 	public AutoShutdownCommand(AutoShutdownPlugin plugin) {
 		this.plugin = plugin;
-		log = plugin.log;
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -123,12 +120,6 @@ public class AutoShutdownCommand implements CommandExecutor {
 		return true;
 	}
 
-	private void reply(CommandSender sender, String message) {
-		if (sender == null)
-			log.info(message);
-		else
-			sender.sendMessage(message);
-	}
 
 	static enum SubCommand {
 		HELP, RELOAD, CANCEL, SET, LIST, UNKNOWN;
